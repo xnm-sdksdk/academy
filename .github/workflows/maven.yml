@@ -10,6 +10,7 @@ env:
   PATH_DOCKERFILE: ${{ inputs.path_dockerfile }}
   IMAGE_NAME: ${{ inputs.image_name }}
   TAG_NAME: ${{ inputs.tag_name }}
+  ARTIFACT_NAME: ${{ inputs.artifact_name }}
 
 jobs:
   build:
@@ -34,7 +35,17 @@ jobs:
         path_dockerfile: Dockerfile
         image_name: academy
         tag_name: main
-  
+
+    - name: Save docker Image
+      run: |
+        docker save ${IMAGE_NAME}:${TAG_NAME} -o ${ARTIFACT_NAME}.tar
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+        path: ${{ env.ARTIFACT_NAME }}.tar
+
   list-images:
     runs-on: ubuntu-latest
     needs: build
