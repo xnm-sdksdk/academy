@@ -35,6 +35,10 @@ jobs:
         image_name: academy
         tag_name: main
   
+  list-images:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: List images
       run: docker image ls
     
