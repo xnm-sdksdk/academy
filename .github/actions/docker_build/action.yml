@@ -25,4 +25,5 @@ runs:
           -t "${{ inputs.image_name }}:${{ inputs.tag_name }}" \
           .
         echo "Built image: "${{ inputs.image_name }}:${{ inputs.tag_name }}"
+      shell: bash
       
