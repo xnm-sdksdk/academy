@@ -32,3 +32,8 @@ jobs:
 
     - name: Run Docker
       run: docker build . --file Dockerfile --tag academy:$(date +%s)
+
+    - name: List Docker Images
+      run: |
+          echo "Listing all Docker images:"
+          docker images
