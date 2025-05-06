@@ -27,7 +27,7 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-        
+
     - name: Run Docker
       run: docker build . --file Dockerfile --tag academy:$(date +%s)
 
@@ -37,4 +37,4 @@ jobs:
           docker images
     
     - name: Maven Build
-      run: ./.github/actions/docker_build
+      run: ./.github/actions/docker_build/action.yml
