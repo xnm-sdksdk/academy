@@ -22,8 +22,8 @@ runs:
         fi
         docker build \
           -f "${{ inputs.path_dockerfile }}" \
-          -t "${{ inputs.image_name }}:${{ inputs.tag_name }}" \
+          -t "${{ inputs.image_name }}:$TAG" \
           .
-        echo "Built image: "${{ inputs.image_name }}:${{ inputs.tag_name }}"
+        echo "Built image: ${inputs.image_name}:$TAG"
       shell: bash
       
