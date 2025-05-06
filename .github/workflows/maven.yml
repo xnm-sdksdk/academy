@@ -42,5 +42,9 @@ jobs:
     - name: Maven Build
       uses: ./.github/actions/maven_build
 
-    - name: Maven Build
+    - name: Build Docker Image
       uses: ./.github/actions/docker_build
+      with:
+        path_dockerfile: Dockerfile
+        image_name: academy
+        tag_name: main

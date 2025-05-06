@@ -1,13 +1,37 @@
-name: Replace-With-Your-Action-Name
-description: Replace-With-Your-Action-Description
+name: Custom Docker Build Action
+description: Builds a Docker image with configurable Dockerfile path and naming
 inputs:
-  replace_with_your_input_name:
-    description: "Replace-With-Your-Input-Description"
+  path_dockerfile:
+    description: Path to the Dockerfile
     required: false
-    default: "Replace-With-Your-Input-Default-Value"
+    default: "Dockerfile"
+  image_name:
+    description: Name for the generated Docker image
+    required: true
+  tag_name:
+    description: Tag for the generated Docker image
+    required: false
 runs:
   using: composite
   steps:
     - run: |
         echo "Update me with the necessary commands"
       shell: bash
+runs:
+  using: composite
+  steps:
+    - run: |
+        if [ -z "$TAG_NAME" ]; then
+          export TAG=$(date +%s)
+        else
+          export TAG="$TAG_NAME"
+        fi
+        docker build \
+          -f "$PATH_DOCKERFILE" \
+          -t "${IMAGE_NAME}:${TAG}" \
+          .
+        echo "Built image: ${IMAGE_NAME}:${TAG}"
+      env:
+        PATH_DOCKERFILE: ${{ inputs.path_dockerfile }}
+        IMAGE_NAME: ${{ inputs.image_name }}
+        TAG_NAME: ${{ inputs.tag_name }}
