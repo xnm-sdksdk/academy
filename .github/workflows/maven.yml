@@ -68,12 +68,6 @@ jobs:
     - name: List images
       run: docker image ls
   
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
@@ -84,3 +78,5 @@ jobs:
       run: |
         docker tag ${{env.IMAGE_NAME}}:${{env.TAG_NAME}} ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:${{env.TAG_NAME}}
         docker push ${{secrets.DOCKERHUB_USERNAME}}/${{env.IMAGE_NAME}}:${{env.TAG_NAME}}
+    
+    
