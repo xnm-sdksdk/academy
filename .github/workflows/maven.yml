@@ -50,6 +50,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.ARTIFACT_NAME }}
+
+    - name: Load Docker Image
+      run: |
+        docker load -i ${{ env.ARTIFACT_NAME }}.tar
+
     - name: List images
       run: docker image ls
-    
