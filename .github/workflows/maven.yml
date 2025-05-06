@@ -38,7 +38,7 @@ jobs:
 
     - name: Save docker Image
       run: |
-        docker save ${IMAGE_NAME}:${TAG_NAME} -o ${ARTIFACT_NAME}.tar
+        docker save ${{ IMAGE_NAME }}:${{ TAG_NAME }} -o ${ARTIFACT_NAME}.tar
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
