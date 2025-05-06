@@ -15,12 +15,6 @@ runs:
   using: composite
   steps:
     - run: |
-        echo "Update me with the necessary commands"
-      shell: bash
-runs:
-  using: composite
-  steps:
-    - run: |
         if [ -z "$TAG_NAME" ]; then
           export TAG=$(date +%s)
         else
