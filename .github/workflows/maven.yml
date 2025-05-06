@@ -37,4 +37,6 @@ jobs:
           docker images
     
     - name: Maven Build
-      run: ./.github/actions/docker_build/action.yml
+      run: ./.github/actions/docker_build/ 
+          chmod +x ./build.sh
+          ./build.sh
