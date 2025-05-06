@@ -39,7 +39,7 @@ jobs:
     - name: Save docker Image
       run: |
         echo "Saving image ${{env.IMAGE_NAME}}:${{env.TAG_NAME}}"
-        docker save "${{env.IMAGE_NAME}}:${{env.TAG_NAME}}" -o "${ARTIFACT_NAME}.tar"
+        docker save "${{env.IMAGE_NAME}}:${{env.TAG_NAME}}" -o "${{env.ARTIFACT_NAME}}.tar"
       shell: bash
       env:
         IMAGE_NAME: academy
