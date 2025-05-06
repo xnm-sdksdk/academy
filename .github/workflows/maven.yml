@@ -40,6 +40,11 @@ jobs:
       run: |
         echo "Saving image ${IMAGE_NAME}:${TAG_NAME}"
         docker save "${IMAGE_NAME}:${TAG_NAME}" -o "${ARTIFACT_NAME}.tar"
+      shell: /usr/bin/bash -e
+      env:
+        IMAGE_NAME: academy
+        TAG_NAME: main
+        ARTIFACT_NAME: academy-image
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
