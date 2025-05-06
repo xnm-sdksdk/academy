@@ -10,7 +10,7 @@ env:
   PATH_DOCKERFILE: Dockerfile
   IMAGE_NAME: academy
   TAG_NAME: main
-  ARTIFACT_NAME: artifact_name
+  ARTIFACT_NAME: academy-image
 
 jobs:
   build:
