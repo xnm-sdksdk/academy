@@ -25,17 +25,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-    
-    - name: Run Docker
-      run: docker build . --file Dockerfile --tag academy:$(date +%s)
-    
-    - name: List Docker Images
-      run: |
-          echo "Listing all Docker images:"
-          docker images
-
     - name: Maven Build
       uses: ./.github/actions/maven_build
 
@@ -45,3 +34,7 @@ jobs:
         path_dockerfile: Dockerfile
         image_name: academy
         tag_name: main
+  
+    - name: List images
+      run: docker image ls
+    
