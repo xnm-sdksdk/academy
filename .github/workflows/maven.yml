@@ -7,10 +7,10 @@ on:
     branches: [ "main" ]
 
 env:
-  PATH_DOCKERFILE: ${{ inputs.path_dockerfile }}
-  IMAGE_NAME: ${{ inputs.image_name }}
-  TAG_NAME: ${{ inputs.tag_name }}
-  ARTIFACT_NAME: ${{ inputs.artifact_name }}
+  PATH_DOCKERFILE: Dockerfile
+  IMAGE_NAME: academy
+  TAG_NAME: main
+  ARTIFACT_NAME: artifact_name
 
 jobs:
   build:
